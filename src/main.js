@@ -173,7 +173,8 @@ async function nextPage() {
         position: 'topRight',
         timeout: 5000,
       });
-      imageList.innerHTML += createMarkup(res.hits);
+        //   imageList.innerHTML += createMarkup(res.hits);
+        imageList.insertAdjacentHTML('beforeend', markup);
       gallery.refresh();
       nextBtn.classList.add('is-hidden');
 
@@ -181,7 +182,7 @@ async function nextPage() {
 
       return;
     }
-
+    // изменил insertAdjacentHTML
     imageList.innerHTML += createMarkup(res.hits);
     gallery.refresh();
 
@@ -196,8 +197,12 @@ async function nextPage() {
 }
 
 function scrollBy() {
+    const rect = document
+      .querySelector('.gallery-link')
+      .getBoundingClientRect();
   window.scrollBy({
-    top: 640,
+    top: rect.height * 2,
+    left: 0,
     behavior: 'smooth',
   });
 }
