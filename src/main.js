@@ -75,7 +75,7 @@ async function handleSearch(event) {
       nextBtn.classList.remove('is-hidden');
     }
 
-    scrollBy();
+    // scrollBy();
     form.reset();
   } catch (err) {
     handleError(err);
@@ -174,7 +174,7 @@ async function nextPage() {
         timeout: 5000,
       });
         //   imageList.innerHTML += createMarkup(res.hits);
-        imageList.insertAdjacentHTML('beforeend', markup);
+        imageList.insertAdjacentHTML('beforeend', createMarkup(res.hits));
       gallery.refresh();
       nextBtn.classList.add('is-hidden');
 
@@ -182,8 +182,9 @@ async function nextPage() {
 
       return;
     }
-    // изменил insertAdjacentHTML
-    imageList.innerHTML += createMarkup(res.hits);
+    
+      // imageList.innerHTML += createMarkup(res.hits);
+      imageList.insertAdjacentHTML('beforeend', createMarkup(res.hits));
     gallery.refresh();
 
     scrollBy();
